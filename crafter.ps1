@@ -18,6 +18,6 @@ $FormattedCards += ($Cards.data | Select-Object -Property @{ Name = 'Entry';  Ex
 1..$TotalDeckLists | ForEach-Object -Process {
     [string[]]$Clip = @('Deck')
     $Clip += $FormattedCards | Select-Object -Skip $Skip -First $UniqueCardsPerDeck
-    $Clip | Out-File -FilePath ".\$($Skip)deck.txt"
+    $Clip | Out-File -FilePath "$($PSScriptRoot)\$($Skip)deck.txt"
     $Skip += $UniqueCardsPerDeck
 }
