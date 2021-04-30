@@ -14,7 +14,7 @@ $FormattedCards += ($Cards.data | Select-Object -Property @{ Name = 'Entry';  Ex
 [int]$UniqueCardsPerDeck = 62
 [int]$TotalDeckLists = [Math]::Round($CardCount/($UniqueCardsPerDeck * 4))
 
-# Exports text files to the current working directory
+# Exports text files to the same directory as this script file
 1..$TotalDeckLists | ForEach-Object -Process {
     [string[]]$Clip = @('Deck')
     $Clip += $FormattedCards | Select-Object -Skip $Skip -First $UniqueCardsPerDeck
