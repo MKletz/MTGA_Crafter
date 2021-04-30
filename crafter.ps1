@@ -1,8 +1,9 @@
 # Gets card data from scryfall for the given query
 [string]$Set = 'stx'
 [string]$Query = "set:$($Set) (rarity:c OR rarity:u)"
+[string]$URI = "https://api.scryfall.com/cards/search?q=$([uri]::EscapeDataString($Query))"
 $Cards = @()
-$Cards += Invoke-RestMethod -Uri "https://api.scryfall.com/cards/search?q=$([uri]::EscapeDataString($Query))"
+$Cards += Invoke-RestMethod -Uri $URI
 
 # Formats the cards into MTGA deck import format
 $FormattedCards = @()
